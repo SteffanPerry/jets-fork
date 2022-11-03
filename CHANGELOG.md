@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/).
 
+## [3.1.4] - 2022-07-02
+- [#627](https://github.com/boltops-tools/jets/pull/627) use >= for most gem dependencies
+
+## [3.1.3] - 2022-06-29
+- [#626](https://github.com/boltops-tools/jets/pull/626) aws options to better handle rate limit for base path mapping
+
+## [3.1.2] - 2022-04-24
+- [#618](https://github.com/boltops-tools/jets/pull/618) Jets Console accepts environment cli argument
+- [#621](https://github.com/boltops-tools/jets/pull/621) Add SQS and SNS event helpers for jobs
+- [#624](https://github.com/boltops-tools/jets/pull/624) Add lambda.function.ephemeral_storage function property support
+
+## [3.1.1] - 2022-01-18
+- [#615](https://github.com/boltops-tools/jets/pull/615) adjust required_ruby_version
+
+## [3.1.0] - 2022-01-08
+- [#614](https://github.com/boltops-tools/jets/pull/614) support zeitwerk 2.5
+- clean command alias -y for --yes option
+
+## [3.1.0] - 2022-01-08
+- [#614](https://github.com/boltops-tools/jets/pull/614) support zeitwerk 2.5
+- clean command alias -y for --yes option
+- support zeitwerk 2.5
+- update github templates: community.boltops.com
+
+## [3.0.23] - 2021-12-14
+- [#610](https://github.com/boltops-tools/jets/pull/610) Rewrite PLATFORMS section to specify Ruby only
+- [#611](https://github.com/boltops-tools/jets/pull/611) Update ruby_packager.rb
+
+## [3.0.22] - 2021-10-26
+- [#607](https://github.com/boltops-tools/jets/pull/607) Job serialize - Revert "Fix job params serialization"
+
+## [3.0.21] - 2021-10-21
+- [#605](https://github.com/boltops-tools/jets/pull/605) use safer 302 redirect as default
+
+## [3.0.20] - 2021-10-20
+- [#603](https://github.com/boltops-tools/jets/pull/603) redirect_to: smarter handling of request xhr
+- [#604](https://github.com/boltops-tools/jets/pull/604) fix redirect_to 301 and keep use default
+
+## [3.0.19] - 2021-10-20
+- [#602](https://github.com/boltops-tools/jets/pull/602) pin zeitwerk to 2.4.x in gemfile
+
+## [3.0.18] - 2021-10-20
+- [#596](https://github.com/boltops-tools/jets/pull/596) Serialize job data correctly
+- [#598](https://github.com/boltops-tools/jets/pull/598) fixing issues when mounting
+- [#599](https://github.com/boltops-tools/jets/pull/599) pin to zeitwerk 2.4.x
+- [#600](https://github.com/boltops-tools/jets/pull/600) method override also on the lambda function side
+
+## [3.0.17] - 2021-09-15
+- [#593](https://github.com/boltops-tools/jets/pull/593) Fix deploy for new projects. Added rescue block back into lib/jets/commands/deploy.rb
+
+## [3.0.16] - 2021-09-10
+- [#590](https://github.com/boltops-tools/jets/pull/590) Improve Rate Limit Handling
+
+## [3.0.15] - 2021-09-05
+- [#587](https://github.com/boltops-tools/jets/pull/587) Fix private method names
+- [#588](https://github.com/boltops-tools/jets/pull/588) custom domain: adjust rate limit for base mapping
+- [#589](https://github.com/boltops-tools/jets/pull/589) Ujs
+
+## [3.0.14] - 2021-09-01
+- [#583](https://github.com/boltops-tools/jets/pull/583) Don't overwrite content_type  when rendering json or xml with content_type specified
+- [#584](https://github.com/boltops-tools/jets/pull/584) Adds an override flag to change behaviour when Jets is behind an ELB running Jets Server
+- [#585](https://github.com/boltops-tools/jets/pull/585) add_stage controller method
+- [#586](https://github.com/boltops-tools/jets/pull/586) JETS_ELB env var flag
+
+## [3.0.13] - 2021-08-17
+- [#582](https://github.com/boltops-tools/jets/pull/582) use Shotgun::Static middleware always
+
+## [3.0.12] - 2021-08-08
+- [#578](https://github.com/boltops-tools/jets/pull/578) Update "jets delete" documentation to be --yes instead of --skip
+- [#580](https://github.com/boltops-tools/jets/pull/580) Use active support instead of actionview
+- [#581](https://github.com/boltops-tools/jets/pull/581) Csrf csrf-param authenticity_token and use @rails/ujs for crud
+
 ## [3.0.11] - 2021-07-15
 - update serverlessgems gem
 

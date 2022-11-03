@@ -14,6 +14,8 @@ The following table summarizes the releases and upgrade paths.
 
 Version | Notes | Blue-Green? | Run jets upgrade?
 --- | --- | --- | ---
+3.0.14 | Using @rubyonjets/ujs-compat. Will need to make some manual changes. See details below. Manually changes are not needed for newly generated projects. | No | No
+3.0.12 | Using @rails/ujs. Will need to make some manual changes. See details below. Manually changes are not needed for newly generated projects. | No | No
 3.0.0 | Added Ruby 2.7 support. Use Serverless Gems for binary gems. | No | No
 2.1.1 | Change `config.extra_autoload_paths` to `config.autoload_paths` | No | Yes
 2.0.0 | Add csrf forgery protection. The `jets upgrade` commands updates your code with the csrf logic. New apps generated with `jets new` does this already. The routes `namespace` behavior also changed.  Use `prefix` if you prefer the old behavior.  | No | Yes
@@ -28,6 +30,28 @@ Version | Notes | Blue-Green? | Run jets upgrade?
 ## Upgrade Details
 
 The following section provides a little more detail on each version upgrade. Note, not all versions required more details.
+
+### 3.0.14
+
+* Use @rubyonjets/ujs-compat to handle delete of CRUD.
+
+For apps going from Jets 3.0.12 and below, you must make some manual changes.
+
+1. Run `yarn install @rubyonjets/ujs-compact`
+2. Add instead: `import Jets from "@rubyonjets/ujs-compat"` and `Jets.start()` at the bottom of `app/javascript/packs/application.js`
+
+### 3.0.12
+
+* Use @rails/ujs to handle basic CRUD.
+
+For apps going from Jets 3.0.11 and below, you must make some manual changes.
+
+1. Run `yarn install @rails/ujs`
+2. Remove `import '../src/jets/crud'` from `app/javascript/packs/application.js`
+3. Add instead: `import Rails from "@rails/ujs"` and `Rails.start()`
+4. Delete `app/javascript/src/jets/crud.js`
+
+This gets you on Rails UJS, which is has better support for javascript interactions.
 
 ### 3.0.0
 

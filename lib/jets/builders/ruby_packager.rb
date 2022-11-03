@@ -3,7 +3,9 @@ require "bundler" # for clean_old_submodules only
 module Jets::Builders
   class RubyPackager
     include Util
-
+    
+    GEM_REGEXP = /-(arm|x)\d+.*-(darwin|linux)/    
+    
     attr_reader :full_app_root
     def initialize(relative_app_root)
       @full_app_root = "#{build_area}/#{relative_app_root}"
@@ -169,21 +171,28 @@ module Jets::Builders
       # Replace things like nokogiri (1.11.1-x86_64-darwin) => nokogiri (1.11.1)
       lines, new_lines = new_lines, []
       lines.each do |l|
-        if l.include?("-x86_64-darwin")
-          l = l.sub('-x86_64-darwin','')
-        end
+        l.sub!(GEM_REGEXP, '') if l =~ GEM_REGEXP
         new_lines << l
       end
 
       # Make sure platform is ruby
-      lines, new_lines, marker = new_lines, [], false
+      lines, new_lines, in_platforms_section, platforms_rewritten = new_lines, [], false, false
       lines.each do |l|
-        if marker # the next loop has the platform we want to replace
+        if in_platforms_section && platforms_rewritten # once PLATFORMS has been found, skip all lines until the next section
+          if l.present?
+            next
+          else
+            in_platforms_section = false
+          end
+        end
+
+        if in_platforms_section && !platforms_rewritten # specify ruby as the only platform
           new_lines << "  ruby\n"
-          marker = false
+          platforms_rewritten = true
           next
         end
-        marker = l.include?('PLATFORMS')
+
+        in_platforms_section = l.include?('PLATFORMS')
         new_lines << l
       end
 
